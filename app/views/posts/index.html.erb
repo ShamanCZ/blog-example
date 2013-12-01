@@ -1,24 +1,23 @@
-<h1>Listing posts</h1>
+<h1>Ruby on Rails <small>The best thing in general.</small></h1>
  
-<%= link_to 'New post', new_post_path %>
+<div class="row">
+  <div class="col-md-4">
+    <%= render 'form' %>
+  </div>
 
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Text</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
- 
-  <% @posts.each do |post| %>
-    <tr>
-      <td><%= post.title %></td>
-      <td><%= post.text %></td>
-      <td><%= link_to 'Show', post_path(post) %></td>
-      <td><%= link_to 'Edit', edit_post_path(post) %></td>
-      <td><%= link_to 'Destroy', post_path(post),
-                    method: :delete, data: { confirm: 'Are you sure?' } %></td>
-    </tr>
-  <% end %>
-</table>
+  <div class="col-md-8">
+    <div class"list-group"> 
+      <% @posts.each do |post| %>
+        <div class="list-group-item">
+          <h4 class="list-group-item-heading"> <%= post.title %> </h4>
+          <p class="list-group-item-text"> <%= post.text %> </p> 
+          <p class="list-group-item-text"> <%= link_to 'Show', post_path(post) %>
+              | <%= link_to 'Edit', edit_post_path(post) %>
+              | <%= link_to 'Destroy', post_path(post),
+                        method: :delete, data: { confirm: 'Are you sure?' } %></p>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+<%= link_to 'New post', new_post_path, class: "btn btn-primary" %>

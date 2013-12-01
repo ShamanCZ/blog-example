@@ -1,6 +1,10 @@
 class PostsController < ApplicationController
+  # password-protect post modification, creation and stop-existification 
+  http_basic_authenticate_with name: "admin", password: "admin", except: [:index, :show]
+
   def index
     @posts = Post.all
+    @post = Post.new
   end
 
   def new
@@ -14,7 +18,8 @@ class PostsController < ApplicationController
   end
 
   def create
-    # params[:post] contains the attributes i'm interested in. But this line is not gonna work
+    # params[:post] contains the attributes i'm interested in. 
+    # But this line is not gonna work
     # @post = Post.new(params[:post])
     #
     # because of security reasons i need to specify exactly 

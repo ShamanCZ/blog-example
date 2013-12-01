@@ -2,9 +2,15 @@ Blog::Application.routes.draw do
   get "welcome/index"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
+
+  #This is for the first tutorial on guides.rubyonrails.org
   resources :posts do
     resources :comments
   end
+
+  #And more learning of rendering (of my lovely books)
+  resources :books
+
   # You can have the root of your site routed with "root"
   root 'welcome#index'
 
